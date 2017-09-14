@@ -74,6 +74,10 @@ func isNil(t *testing.T, v interface{}, f func()) bool {
 	if v == nil {
 		return true
 	}
+	rv := reflect.ValueOf(v)
+	if rv.Kind() == reflect.Ptr && rv.IsNil() {
+		return true
+	}
 	switch vv := v.(type) {
 	case toString:
 		log(2, fmt.Sprintf(`not nil
