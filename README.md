@@ -182,4 +182,14 @@ lookup heap       -  获取当前内存状态信息，输出到utest.heap文件�
 lookup threadcreate - 获取当前线程创建信息，输出到utest.thread文件，通常用来排查CGO的线程使用情况
 ```
 
-此外你还可以通过注册`utest.CommandHandler`回调来添加自己的监控命令支持。
+此外你还可以通过注册`utest.RegisterCmdHandler`回调来添加自己的监控命令支持。
+
+```demo
+example/register.go
+
+echo 'lookup memory' > utest.cmd
+
+generate memory file in current directory: 
+
+Total: 8372895744, Free:292454400, UsedPercent:74.329555%
+```
